@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block 'body' %}
+<div class="jumbotron parent">
+        <img style="width: 50%;height: 40%" src="http://static.wixstatic.com/media/2d38eadf49194a2382fb80c702c2b5cc.jpg/v2/fit/w_162,h_287/file.jpg" alt="">
+    <div class="absolute">
+        <h1 class="display-4">Welcome to Pharmaco</h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <div class="inner cover">
+    <h1 class="cover-heading"></h1>
+      <div class="row">
+          <div class="col-lg-6">
+              <p class="lead">To get maximum of our site - <br><a href="{% url 'login' %}" class="btn btn-lg btn-secondary">sign in</a></p>
+          </div>
+          <div class="col-lg-6">
+               <p class="lead"> Do not have an account? <br>
+                  <a href="{% url 'signup' %}" class="btn btn-lg btn-secondary">sign up</a>
+                </p>
+          </div>
+      </div>
+
+  </div>
+    </div>
+     {% if request.user.is_superuser %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn btn-success" type="submit">Upload</button>
+    </form>
+     {%  endif %}
+</div>
+
+
+{% endblock %}
